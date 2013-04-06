@@ -1,3 +1,4 @@
+
 GRID = COMP([INSR(PROD),AA(QUOTE)])
 
 #misure
