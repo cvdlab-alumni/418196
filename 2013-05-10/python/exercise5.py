@@ -64,7 +64,7 @@ def DOMAIN(dims):
 		return g
 	return DOMAIN0
 #profilo laterale
-dom = GRID([20])
+dom = GRID([10])
 p0 = [[1.29, 3.79], [1.2, 5.23], [2.73, 4.96], [2.57, 3.73]]
 c0 = BEZIER(S1)(p0)
 l0 = MAP(c0)(dom)
@@ -206,16 +206,16 @@ center_mode = STRUCT([prof_musetto, prof_laterale, prof_daSopra])
 #RUOTE
 
 
-dom2D = DOMAIN([[0,1],[0,2*PI]])([20,20])
+dom2D = DOMAIN([[0,1],[0,2*PI]])([10,10])
 circle_pts = [[0,0,0],[5,0,0],[0,0,3],[5,0,6],[0,0,6]]
 circle_pts_t = TRASLAPOINTS([5,0,0])(circle_pts)
 circle_map = BEZIER(S1)(circle_pts_t)
 tire = COLOR(BLACK)(MAP(ROTATIONALSURFACE(circle_map))(dom2D))
 
 #RAGGI
-domain1D = GRID([20])
-domain2D = GRID([20,20])
-domain3D = GRID([20,20,20])
+domain1D = GRID([10])
+domain2D = GRID([10,10])
+domain3D = GRID([10,10,10])
 
 p1 = [[0,0,0], [0.15,0.10,0], [0.15,0.10,0], [0.3,0,0]]
 p1 = SCALEPOINTS([5,5,5])(p1)
