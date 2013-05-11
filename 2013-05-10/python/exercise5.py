@@ -401,6 +401,8 @@ CELESTE = Color4f([0.0, 0.0, 1.0, 0.2])
 finestrino= R([2,3])(PI/2)(COLOR(CELESTE)(SCALE(3)(1./6)(S([1,2,3])([1./3,1./3,1./3])(MAP(solid_map)(domain3D)))))
 finestrino_ok = T([1,2,3])([0.2+2.7,1./6,1.2])(finestrino)
 
-tutto = STRUCT([center_mode,portiera_ok,wheels,cofano_ok,finestrino_ok])
+portiera_2 = T(2)(3.8)(portiera_ok)
+finestrino_2 = T(2)(3.8)(finestrino_ok)
+tutto = STRUCT([center_mode,portiera_ok,wheels,cofano_ok,finestrino_ok,portiera_2, finestrino_2])
 VIEW(tutto)
 
