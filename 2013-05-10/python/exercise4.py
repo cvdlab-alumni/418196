@@ -1,3 +1,6 @@
+from pyplasm import *
+from lar import *
+
 def GRID(args):
 	model = ([[]],[[0]])
 	for k,steps in enumerate(args):
