@@ -210,12 +210,22 @@ var saldature = COLOR(gold)(STRUCT([sal1,sal2,sal3]))
 var tubicino = EXTRUDE([2.5*f_scala])(CIRCLE(0.1*f_scala)(20))
 var tubicino_ok = COLOR(gold)(T([0,1,2])([-1.25*f_scala,12.5*f_scala,2*r_tubo+0.8*f_scala])(R([0,2])([PI/2])(tubicino)))
 
+var torus6 = TORUS(0.8/2*f_scala,0.05*f_scala)
+var torus6_solid = MAP(torus6)(DOMAIN([[0,2*PI],[0,PI]])([20,20]))
+var torus6_ok = T([0])([0.4*f_scala])(R([1,2])([PI])(torus6_solid))
+var cil6 = EXTRUDE([0.2*f_scala])(DISK(0.05 * f_scala)(20))
+var cil6_r = R([1,2])([-PI/2])(cil6)
+var cil7 = EXTRUDE([0.4*f_scala])(DISK(0.05 * f_scala)(20))
+var cil7_r = T([0])([0.8*f_scala])(R([1,2])([-PI/2])(cil7))
+
+var app0 = STRUCT([torus6_ok, cil6_r, cil7_r])
+var app0_ok = T([0])([-0.8*f_scala])(app0)
+var app0_finito = COLOR(gold)(T([0,1,2])([-1.75*f_scala,8.5*f_scala,2*r_tubo+0.8*f_scala])(app0_ok))
 
 var model = STRUCT([ent_usc_T, tasto_ok_1, tasto_ok_2, tasto_ok_3, 
   parte0, parte1_ok, parte2_finita, parte3_finita, 
   c_m_1, c_m_2, c_s_1, c_s_2, c_s_3, c_s_4, b_ok, 
-  saldature, tubicino_ok])
-
+  saldature, tubicino_ok, app0_finito])
 
 
 
