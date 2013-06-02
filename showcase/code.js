@@ -186,6 +186,10 @@ var sal3 = T([1])([0.5])(sal2)
 
 var saldature = COLOR(gold)(STRUCT([sal1,sal2,sal3]))
 
+var tubicino = EXTRUDE([2.5*f_scala])(CIRCLE(0.1*f_scala)(20))
+var tubicino_ok = COLOR(gold)(T([0,1,2])([-1.25*f_scala,12.5*f_scala,2*r_tubo+0.8*f_scala])(R([0,2])([PI/2])(tubicino)))
+
+
 var model = STRUCT([ent_usc_T, tasto_ok_1, tasto_ok_2, tasto_ok_3, 
 	parte0, parte1_ok, parte2_finita, parte3_finita, 
 	c_m_1, c_m_2, c_s_1, c_s_2, c_s_3, c_s_4, b_ok, 
