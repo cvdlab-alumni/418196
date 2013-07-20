@@ -269,8 +269,8 @@ var sol_spondaB_s = BEZIER(S2)([srf_b_spondaB_s,srf_a_spondaB_s])
 var spondaB_map_s = MAP(sol_spondaB_s)(domain3D)
 var spondaB_s = COLOR(BLUE)(T([0,1,2])([5.1-4.4,0.2,6.2])(spondaB_map_s))
 
-var sponda7 = COLOR(ORANGE)(T([0,1,2])([5.1+4.4+2.8*COS(PI/6)+0.5*SIN(PI/6),0.2,5.7-2.8*SIN(PI/6)+0.5*COS(PI/6)])(R([0,2])([PI/6])(CUBOID([0.5,prof_el_largo,2.5]))))
-var sponda8 = COLOR(ORANGE)(T([0,1,2])([5.1-4.4-2.8*COS(PI/6)-0.5*SIN(PI/6)-0.5*COS(PI/6),0.2,5.7-2.8*SIN(PI/6)+0.5*COS(PI/6)-0.5*SIN(PI/6)])(R([0,2])([-PI/6])(CUBOID([0.5,prof_el_largo,2.5]))))
+var sponda7 = COLOR(ORANGE)(T([0,1,2])([5.1+4.4+2.8*COS(PI/6)+0.5*SIN(PI/6),0.2,5.7-2.8*SIN(PI/6)+0.9*COS(PI/6)])(R([0,2])([PI/6])(CUBOID([0.5,prof_el_largo,2.5]))))
+var sponda8 = COLOR(ORANGE)(T([0,1,2])([5.1-4.4-2.8*COS(PI/6)-0.5*SIN(PI/6)-0.5*COS(PI/6),0.2,5.7-2.8*SIN(PI/6)+0.9*COS(PI/6)-0.5*SIN(PI/6)])(R([0,2])([-PI/6])(CUBOID([0.5,prof_el_largo,2.5]))))
 
 var spondaN = COLOR(BLACK)(T([0,1,2])([10.2-0.5/COS(PI/6),0.2,1.5])(R([0,2])([PI/6])(CUBOID([0.5,prof_el_largo,4.0]))))
 var spondaN_s = COLOR(BLACK)(T([0,1,2])([0.5*TAN(PI/6)*SIN(PI/6),0.2,1.5-0.5*TAN(PI/6)*COS(PI/6)])(R([0,2])([-PI/6])(CUBOID([0.5,prof_el_largo,4.0]))))
