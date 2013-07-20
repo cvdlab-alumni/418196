@@ -34,9 +34,9 @@ function SCALEPOINTS(value){
 	}
 	return SCALEPOINTS2
 }
-var domain = DOMAIN([[0,1]])([10])
-var domain2D = DOMAIN([[0,1],[0,1]])([10,10])
-var domain3D = DOMAIN([[0,1],[0,1],[0,1]])([10,10,10])
+var domain = DOMAIN([[0,1]])([8])
+var domain2D = DOMAIN([[0,1],[0,1]])([8,8])
+var domain3D = DOMAIN([[0,1],[0,1],[0,1]])([8,8,8])
 var BROWN = [0.54,0.27,0.07]
 var RED = [1,0,0]
 var RED2 = [0.8,0,0]

@@ -79,21 +79,21 @@ var GREY = [0.4,0.4,0.4]
 var domain = DOMAIN([[0,1]])([20])
 var domain2D = DOMAIN([[0,1],[0,1]])([20,20])
 var domain3D = DOMAIN([[0,1],[0,1],[0,1]])([20,20,20])
-var domainC = DOMAIN([[0,1],[0,2*PI]])([40,40])
+var domainC = DOMAIN([[0,1],[0,2*PI]])([30,30])
 
-
+//parte inferiore
 var pts1 = [[0,0,0],[-4,0,0],[-6.6,0,0],[-6,0,0.9],[-4.5,0,1],[-4,0,2],[-4,0,4]]
 var b1 = BEZIER(S0)(pts1)
-var c1 = MAP(b1)(domain)
 
 var srf_base = ROTATIONAL_SURFACE(b1)
 var srf_base_map = MAP(srf_base)(domainC)
-var cyl = T([2])([4])(CYL_SURFACE([4,1.5])([40]))
+var cyl = T([2])([4])(CYL_SURFACE([4,1.5])([30]))
 
-var disk = T([2])([5.5])(DISK(4)(30))
+var disk = T([2])([5.5])(DISK(4)(25))
 
 var parte_inf = STRUCT([srf_base_map,disk])
 
+//parte superiore
 var pts2 = [[0,0,3.8],
 			[-4,0,3.8],[-4,0,3.8],
 			[-5.5,0,4],
@@ -106,7 +106,7 @@ var c2 = MAP(b2)(domain)
 var srf_corpo = ROTATIONAL_SURFACE(b2)
 var srf_corpo_map = MAP(srf_corpo)(domainC)
 
-var coperchio = T([2])([16.5])(DISK(3)(40))
+var coperchio = T([2])([16.5])(DISK(3)(25))
 
 //triangolino sopra il coperchio
 var pts3 = [[0,0,0],[4,0.3,0],[4,0.3,0],[0,0.6,0]]
@@ -288,9 +288,47 @@ var maniglia = T([1])([-0.5])(STRUCT([m_srf1_map,m_srf2_map,m_srf3_map,
 				m_srf6_map,m_srf7_map,m_srf8_map,m_srf9_map,m_srf10_map]))
 var maniglia_posto = COLOR([0.55,0.27,0.25])(T([0,2])([-3,16.5])(maniglia))
 
+//apricoperchio
+//var domainL = DOMAIN([[0,1]])([10])
+var domain3DL = DOMAIN([[0,1],[0,1],[0,1]])([10,10,10])
+var cern_ac = COLOR(YELLOW)(R([1,2])([PI/2])(TORUS_SURFACE([0.08,0.15])([20,20])))
+var cern1_ac = T([1])([0.5])(cern_ac)
+var cern2_ac = T([1])([-0.5])(cern_ac)
+
+var pts_ac = [[0,0,0],[0,0,3],[0,2,3],[0,2,0]]
+var b1_ac = BEZIER(S0)(pts_ac)
+var ptsb_ac = [[0,0,0],[0,2,0]]
+var b1b_ac = BEZIER(S0)(ptsb_ac)
+
+var pts2_ac = [[0.2,-0.2,0],[0.2,-0.2,3.6],[0.2,2.2,3.6],[0.2,2.2,0]]
+var b2_ac = BEZIER(S0)(pts2_ac)
+var pts2b_ac = [[0.2,-0.2,0],[0.2,2.2,0]]
+var b2b_ac = BEZIER(S0)(pts2b_ac)
+
+var pts3_ac = TRASLAPOINTS([0.4,0,0])(pts_ac)
+var b3_ac = BEZIER(S0)(pts3_ac)
+var pts3b_ac = TRASLAPOINTS([0.4,0,0])(ptsb_ac)
+var b3b_ac = BEZIER(S0)(pts3b_ac)
+
+var srf_ac = BEZIER(S1)([b1_ac,b1b_ac])
+var srf2_ac = BEZIER(S1)([b2_ac,b2b_ac])
+var srf3_ac = BEZIER(S1)([b3_ac,b3b_ac])
+
+var sol_ac = BEZIER(S2)([srf_ac,srf2_ac,srf3_ac])
+var sol_map_ac = MAP(sol_ac)(domain3DL)
+
+var manichetto_ac = T([0,1,2])([-0.1,-0.5,0.5])(S([0,1,2])([1/2,1/2,1/2])(sol_map_ac))
+
+var cubetto_ac = T([0,1,2])([-0.5,-0.999/2,-0.5])(CUBOID([1,0.999,1]))
+var apricoperchio = STRUCT([manichetto_ac,cern1_ac,cern2_ac,cubetto_ac])
+var apricoperchio_posto = T([0,2])([-3.3,16])(apricoperchio)
+
+
+
+//caffettiera
 var model = STRUCT([coperchio,
 					srf_corpo_map,srf_base_map,cyl,
 					triangolino_posto,
 					beccuccio_posto,
-					valvola_posto,maniglia_posto])
+					valvola_posto,maniglia_posto,apricoperchio_posto])
 DRAW(model)

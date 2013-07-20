@@ -162,6 +162,8 @@ var zampa = STRUCT([COLOR(RED)(sup1_2_map),COLOR(RED)(sup1_3_map),COLOR(RED)(sup
 var zampa_T = T([0,1,2])([2*sqrt*SIN(PI/4),-1,1])(zampa)
 var zampa_R = R([0,2])(PI/4)(zampa_T)
 
+
+//piano
 var p_pts1 = [[0,0,0],[0,4,0]]
 var p_b1 = BEZIER(S0)(p_pts1)
 
@@ -278,3 +280,6 @@ var zampa4 = S([0])([-1])(zampa3)
 var punta4 = S([0])([-1])(punta3)
 var parteGREEN = STRUCT([COLOR(GREEN)(piano4),COLOR(GREEN)(zampa4),COLOR(GREY)(punta4)])
 var parteGREEN_T = T([0,1,2])([0,16,0])(parteGREEN)
+
+var tavolo = STRUCT([parteYELLOW, parteBLUE, parteGREEN_T, parteRED_T])
+DRAW(tavolo)
