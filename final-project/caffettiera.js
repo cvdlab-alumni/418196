@@ -79,7 +79,7 @@ var GREY = [0.4,0.4,0.4]
 var domain = DOMAIN([[0,1]])([20])
 var domain2D = DOMAIN([[0,1],[0,1]])([20,20])
 var domain3D = DOMAIN([[0,1],[0,1],[0,1]])([20,20,20])
-var domainC = DOMAIN([[0,1],[0,2*PI]])([30,30])
+var domainC = DOMAIN([[0,1],[0,2*PI]])([20,20])
 
 //parte inferiore
 var pts1 = [[0,0,0],[-4,0,0],[-6.6,0,0],[-6,0,0.9],[-4.5,0,1],[-4,0,2],[-4,0,4]]
@@ -87,7 +87,7 @@ var b1 = BEZIER(S0)(pts1)
 
 var srf_base = ROTATIONAL_SURFACE(b1)
 var srf_base_map = MAP(srf_base)(domainC)
-var cyl = T([2])([4])(CYL_SURFACE([4,1.5])([30]))
+var cyl = T([2])([4])(CYL_SURFACE([4,1.5])([20]))
 
 var disk = T([2])([5.5])(DISK(4)(25))
 
@@ -101,7 +101,6 @@ var pts2 = [[0,0,3.8],
 			[-3,0,15]]
 var pts2_T = TRASLAPOINTS([0,0,1.5])(pts2)
 var b2 = BEZIER(S0)(pts2_T)
-var c2 = MAP(b2)(domain)
 
 var srf_corpo = ROTATIONAL_SURFACE(b2)
 var srf_corpo_map = MAP(srf_corpo)(domainC)
@@ -289,7 +288,6 @@ var maniglia = T([1])([-0.5])(STRUCT([m_srf1_map,m_srf2_map,m_srf3_map,
 var maniglia_posto = COLOR([0.55,0.27,0.25])(T([0,2])([-3,16.5])(maniglia))
 
 //apricoperchio
-//var domainL = DOMAIN([[0,1]])([10])
 var domain3DL = DOMAIN([[0,1],[0,1],[0,1]])([10,10,10])
 var cern_ac = COLOR(YELLOW)(R([1,2])([PI/2])(TORUS_SURFACE([0.08,0.15])([20,20])))
 var cern1_ac = T([1])([0.5])(cern_ac)
